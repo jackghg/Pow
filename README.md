@@ -5,7 +5,7 @@ Minimal window switcher that uses wmctrl, wrote in c++ and fltk.
 -m	side margin from screen  
 -t	top margin  
 -b	your titlebar height  
--?  
+-?  help
 ## Install
 Requires wmctrl and fltk.  
 On Arch:  
