@@ -24,8 +24,8 @@ exit(0);
 }
 
 int main(int argc, char *argv[]) {
-// title bar, margin, font size
-short of = 34, bo = 50, fs = 35;
+// title bar, side margin, top margin, font size
+short of = 34, bo = 50, to = 25, fs = 35;
 // arguments
 if (argc) { short t;
 for (int n = 1; n < argc; ++n) {
@@ -37,12 +37,15 @@ if (n + 1 < argc && isdigit(argv[n+1][0]) && strlen(argv[n+1]) < 5) {
 t = atoi(argv[n+1]); if (t) { bo = t; } } }
 else if (!strcmp(argv[n], "-t")) {
 if (n + 1 < argc && isdigit(argv[n+1][0]) && strlen(argv[n+1]) < 4) {
+t = atoi(argv[n+1]); if (t) { to = t; } } }
+else if (!strcmp(argv[n], "-b")) {
+if (n + 1 < argc && isdigit(argv[n+1][0]) && strlen(argv[n+1]) < 4) {
 t = atoi(argv[n+1]); if (t) { of = t; } } }
-else if (!strcmp(argv[n], "-?")) { printf("\nPow 0.5 window switcher.\n\nOPTIONS:\n-s	font size\n-m	margin from screen\n-t	your titlebar height\n\n"); exit(0); } } }
+else if (!strcmp(argv[n], "-?")) { printf("\nPow 0.5 window switcher.\n\nOPTIONS:\n-s	font size\n-m	side margin from screen\n-t	top margin\n-b	your titlebar height\n\n"); exit(0); } } }
 // UI
 unsigned short w = Fl::w() - bo - bo;
 unsigned short h = Fl::h();
-Fl_Window win( bo, bo, w, 50, "pow" );
+Fl_Window win( bo, to + of, w, 50, "pow" );
 Fl_Select_Browser bro(NULL, NULL, w-1, 49);
 bro.box(FL_FLAT_BOX);
 bro.textsize(fs);
@@ -68,10 +71,10 @@ pclose(pipe);
 win.resizable(bro);
 float fo =  fs * 18;
 fo /= 100; fo += 1.5; fo += fs; fo *= i;
-int hh = (int) fo + 7;
+int hh = (int) fo + 5;
 if ( hh > 50 ) {
-if ( ( hh + of + bo ) > h ) hh = h - bo - of;
-win.resize(bo, bo+of, w, hh); } //bro.resize(NULL, NULL, w-1, hh-1);
+if ( ( hh + of + to ) > h ) hh = h - to - of;
+win.resize(bo, to + of, w, hh); } //bro.resize(NULL, NULL, w-1, hh-1);
 win.resizable(bro);
 win.show(argc, argv);
 return(Fl::run());
