@@ -1,7 +1,7 @@
 # Pow
 Minimal window switcher that uses wmctrl, wrote in c++ and fltk.
-##Options:
--s	font size  
+## Options:
+-s   font size  
 -m	side margin from screen  
 -t	top margin  
 -b	your titlebar height  
