@@ -9,7 +9,7 @@ Minimal window switcher that uses wmctrl, wrote in c++ and fltk.
 ## Install
 Requires wmctrl and fltk.  
 On Arch:  
-`sudo pacman -S base-devel fltk wmctrl`  
+`sudo pacman -S fltk wmctrl`  
 To build and install use:  
 `sudo make build clean install`  
 To uninstall:  
